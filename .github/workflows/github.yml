@@ -1,0 +1,40 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # build docs website
+  build:
+    runs-on: windows-latest
+    steps:
+      - if: '$CI_COMMIT_BRANCH =~ /^(next|main|dev\/.*$|ci\/.*$)$/'
+    container: node:12
+    before_script:
+      - export BUILD_VERSION=$(node -e "require('./lerna.json').version" -p)
+      - export BUILD_VERSION_SAFE=$(echo $BUILD_VERSION | sed -e 's,\.,'""',g')
+    script:
+      - yarn x
+      - yarn x build
+      - yarn x docs:build --debug
+      - mkdir -p "vuepress/docs-${BUILD_VERSION_SAFE}"
+      # replace dots sed -e 's,\.,'"\\."',g'
+      # Vuepress does not support dot on dest
+      - VUE_APP_BASE_URL=/$BUILD_VERSION/ yarn x docs:build --debug --dest=./vuepress/docs-${BUILD_VERSION_SAFE}/
+      - tar czfv docs-${BUILD_VERSION}.tar.gz --transform=s/docs-${BUILD_VERSION_SAFE}/${BUILD_VERSION}/ --directory=vuepress/ docs-${BUILD_VERSION_SAFE}
+      - mv docs-${BUILD_VERSION}.tar.gz docs.tar.gz
+    artifacts:
+      expire_in: 32 hours
+      paths:
+        - docs.tar.gz
