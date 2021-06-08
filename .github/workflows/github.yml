@@ -18,23 +18,57 @@ jobs:
   # build docs website
   build:
     runs-on: windows-latest
+    container: node:12
     steps:
       - if: '$CI_COMMIT_BRANCH =~ /^(next|main|dev\/.*$|ci\/.*$)$/'
-    container: node:12
-    before_script:
-      - export BUILD_VERSION=$(node -e "require('./lerna.json').version" -p)
-      - export BUILD_VERSION_SAFE=$(echo $BUILD_VERSION | sed -e 's,\.,'""',g')
-    script:
-      - yarn x
-      - yarn x build
-      - yarn x docs:build --debug
-      - mkdir -p "vuepress/docs-${BUILD_VERSION_SAFE}"
+      - run: export BUILD_VERSION=$(node -e "require('./lerna.json').version" -p)
+      - run: export BUILD_VERSION_SAFE=$(echo $BUILD_VERSION | sed -e 's,\.,'""',g')
+      - run: yarn x
+      - run: yarn x build
+      - run: yarn x docs:build --debug
+      - run: mkdir -p "vuepress/docs-${BUILD_VERSION_SAFE}"
       # replace dots sed -e 's,\.,'"\\."',g'
       # Vuepress does not support dot on dest
-      - VUE_APP_BASE_URL=/$BUILD_VERSION/ yarn x docs:build --debug --dest=./vuepress/docs-${BUILD_VERSION_SAFE}/
-      - tar czfv docs-${BUILD_VERSION}.tar.gz --transform=s/docs-${BUILD_VERSION_SAFE}/${BUILD_VERSION}/ --directory=vuepress/ docs-${BUILD_VERSION_SAFE}
-      - mv docs-${BUILD_VERSION}.tar.gz docs.tar.gz
-    artifacts:
-      expire_in: 32 hours
-      paths:
-        - docs.tar.gz
+      - run: VUE_APP_BASE_URL=/$BUILD_VERSION/ yarn x docs:build --debug --dest=./vuepress/docs-${BUILD_VERSION_SAFE}/
+      - run: tar czfv docs-${BUILD_VERSION}.tar.gz --transform=s/docs-${BUILD_VERSION_SAFE}/${BUILD_VERSION}/ --directory=vuepress/ docs-${BUILD_VERSION_SAFE}
+      - run: mv docs-${BUILD_VERSION}.tar.gz docs.tar.gz
+      - name: build docs.tar.gz
+        with:
+          path: ./docs.tar.gz
+          
+  # build and upload a versioned doc
+  upload_docs:
+    runs-on: windows-latest
+    container: coffeekitkat/curl:7.55.0
+    steps:
+      - if: '$CI_COMMIT_BRANCH =~ /^(next|main)$/'
+      - run: export BUILD_VERSION=$(cat ./lerna.json | jq ".version" -r)
+      - run: 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file docs.tar.gz "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/docs-site/1.4.0/${BUILD_VERSION}.tar.gz"'
+      - run: echo "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/docs-site/${BUILD_VERSION}/${BUILD_VERSION}.tar.gz"
+    needs:
+      - build
+      
+  # Upload dev and test versions of the docs bundle
+  upload_docs_dev:
+    runs-on: windows-latest
+    container: coffeekitkat/curl:7.55.0
+    steps:
+      - if: '$CI_COMMIT_BRANCH =~ /^(next|main|dev\/.*$|ci\/.*$)$/'
+      - run: export BUILD_VERSION=$(cat ./lerna.json | jq ".version" -r)
+      - run: 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file docs.tar.gz "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/docs-site-dev/1.4.0/${BUILD_VERSION}.tar.gz"'
+      - run: echo "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/docs-site-dev/1.4.0/${BUILD_VERSION}.tar.gz"
+    needs:
+      - build
+  
+  # Deploy artifact from build only when branch is default
+  pages: # the job must be named pages
+    runs-on: windows-latest
+    container: node:12
+    continue-on-error: true
+    steps:
+      - run: yarn x
+      - run: yarn x build && yarn x docs:build
+      - run: mv ./docs/.vuepress/dist public # rename the dist folder (result of npm run build)
+      - name: build docs.tar.gz
+        with:
+          path: ./public
