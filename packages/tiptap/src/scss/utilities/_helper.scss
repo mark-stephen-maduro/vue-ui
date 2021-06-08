@@ -1,0 +1,51 @@
+$spacers: 1, 2, 3, 4, 5;
+
+@each $spacer in $spacers {
+  // padding classes
+  .p-#{$spacer} {
+    padding: $spacer + 0.25rem !important;
+  }
+  .pt-#{$spacer} {
+    padding: $spacer + 0.25rem !important;
+  }
+  .pl-#{$spacer} {
+    padding: $spacer + 0.25rem !important;
+  }
+  .pr-#{$spacer} {
+    padding: $spacer + 0.25rem !important;
+  }
+  .px-#{$spacer} {
+    padding-left: $spacer + 0.25rem !important;
+    padding-right: $spacer + 0.25rem !important;
+  }
+  .py-#{$spacer} {
+    padding-top: $spacer + 0.25rem !important;
+    padding-bottom: $spacer + 0.25rem !important;
+  }
+  // margin classes
+  .m-#{$spacer} {
+    margin: $spacer + 0.25rem !important;
+  }
+  .mt-#{$spacer} {
+    margin: $spacer + 0.25rem !important;
+  }
+  .ml-#{$spacer} {
+    margin: $spacer + 0.25rem !important;
+  }
+  .mr-#{$spacer} {
+    margin: $spacer + 0.25rem !important;
+  }
+  .mx-#{$spacer} {
+    margin-left: $spacer + 0.25rem !important;
+    margin-right: $spacer + 0.25rem !important;
+  }
+  .my-#{$spacer} {
+    margin-top: $spacer + 0.25rem !important;
+    margin-bottom: $spacer + 0.25rem !important;
+  }
+}
+
+// display classes
+.d-inline {
+  display: inline;
+}

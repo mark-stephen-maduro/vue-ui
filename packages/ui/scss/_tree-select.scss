@@ -1,0 +1,131 @@
+// DEPRECATED: Moved to /components/treeselect/treeselect.scss
+
+@import 'node_modules/@riophae/vue-treeselect/dist/vue-treeselect';
+
+.vue-treeselect {
+  // Tree select states `primary` `danger` `warning` `success`
+  &--focused[status='primary'] + .vue-treeselect--border {
+    @include border-anim($focus-input-primary);
+  }
+  &--focused[status='warning'] + .vue-treeselect--border {
+    @include border-anim($focus-input-warning);
+  }
+  &--focused[status='danger'] + .vue-treeselect--border {
+    @include border-anim($focus-input-danger);
+  }
+  &--focused[status='success'] + .vue-treeselect--border {
+    @include border-anim($focus-input-success);
+  }
+
+  &__multi-value-item {
+    border-radius: $border-radius !important;
+  }
+
+  // Typeahead
+  &[type-ahead] {
+    .vue-treeselect__control {
+      border-color: transparent !important;
+      background-color: #3565a5 !important;
+
+      &:hover {
+        border-color: transparent !important;
+      }
+    }
+
+    .vue-treeselect__input,
+    .vue-treeselect__single-value {
+      color: white !important;
+    }
+
+    .vue-treeselect__menu {
+      color: $black !important;
+    }
+  }
+
+  // Badge colors overrides
+  &[badge-color='normal'] &__multi-value-item {
+    background-color: #e3f2fd !important;
+    color: #039be5 !important;
+  }
+  &[badge-color='primary'] &__multi-value-item {
+    background-color: $focus-input-primary !important;
+    color: white !important;
+  }
+  &[badge-color='success'] &__multi-value-item {
+    background-color: $focus-input-success;
+    color: white;
+  }
+  &[badge-color='warning'] &__multi-value-item {
+    background-color: $focus-input-warning;
+    color: black;
+  }
+  &[badge-color='danger'] &__multi-value-item {
+    background-color: $focus-input-danger;
+    color: white;
+  }
+
+  // Style for input container.
+  &__control {
+    background-color: transparent;
+    border: solid 1px #ced4da;
+    border-radius: $border-radius;
+  }
+
+  &__input {
+    font-family: $font-family-base;
+    font-weight: 500; // change font weight to font variable when available.
+    font-size: 0.8rem; // change font size to font variable when available.
+  }
+
+  // Overrides border top radius to our current border-radius value.
+  &--open.vue-treeselect--open-above .vue-treeselect__control {
+    border-radius: $border-radius;
+  }
+
+  // Overrides border bottom radius to our current border-radius value.
+  &--open.vue-treeselect--open-below .vue-treeselect__control {
+    border-radius: $border-radius;
+  }
+
+  // Overrides the class of menu_container this adds border effect to the input.
+  &--border {
+    height: 2px;
+    margin-top: -3px;
+    transform: scaleX(0);
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+    transition: transform 150ms ease-in-out !important;
+  }
+
+  // Overrides the style for the menu when the controller has `focused` class.
+  &--focused &__menu-container {
+    background-color: red;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    border-radius: $border-radius;
+    // box-shadow: $box-shadow;
+    font-weight: 500;
+    animation: fadeInDown 150ms forwards !important;
+  }
+
+  // Arrow
+  &__control-arrow {
+    transition: transform 200ms ease-in-out;
+  }
+
+  &__placeholder {
+    color: $gray-500;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -3%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

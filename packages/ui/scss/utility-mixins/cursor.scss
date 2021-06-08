@@ -1,0 +1,16 @@
+// ADD CLASS FOR CURSORS
+@mixin ipy-cursor-pointer {
+  cursor: pointer !important;
+}
+@mixin ipy-cursor-help {
+  cursor: help !important;
+}
+@mixin ipy-cursor-wait {
+  cursor: wait !important;
+}
+@mixin ipy-cursor-not-allowed {
+  cursor: not-allowed !important;
+}
+@mixin ipy-cursor-grab {
+  cursor: grab !important;
+}

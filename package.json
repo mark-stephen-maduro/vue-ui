@@ -1,0 +1,150 @@
+{
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/ui",
+      "packages/tiptap",
+      "packages/apps-global-menu"
+    ],
+    "nohoist": [
+      "**/bootstrap-vue",
+      "**/bootstrap",
+      "**/moment",
+      "**/pikaday",
+      "**/@riophae/vue-treeselect",
+      "**/vue-ads-table-tree",
+      "**/@vue/**",
+      "**/cross-env",
+      "**/vue"
+    ]
+  },
+  "scripts": {
+    "docs": "vuepress dev docs",
+    "docs:build": "cross-env NODE_ENV=production vuepress build docs",
+    "docs:start": "serve ./docs/.vuepress/dist",
+    "test": "jest",
+    "x": "npx yarn@1.19.1",
+    "lint:eslint": "eslint --fix packages/**/*.js",
+    "lint:without-fix": "eslint packages/**/*.js",
+    "changelog": "node scripts/generate-changelog.js",
+    "release": "node scripts/private-registry-release",
+    "ui": "yarn x workspace @infopiphany/ui",
+    "apps": "yarn x workspace @infopiphany/apps-global-menu",
+    "tiptap": "yarn x workspace @infopiphany/tiptap",
+    "build": "yarn ui build:dev && yarn apps build:all && yarn tiptap build"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/__tests__/**/*.spec.js"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-regular-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/vue-fontawesome": "^2.0.0",
+    "@infopiphany/tiptap": "1.4.3",
+    "@infopiphany/ui": "1.4.3",
+    "@riophae/vue-treeselect": "^0.4.0",
+    "@vue/component-compiler-utils": "2.0.x",
+    "bootstrap": "^4.5.3",
+    "bootstrap-vue": "^2.17.3",
+    "buble": "0.19.x",
+    "conventional-changelog": "3.1.21",
+    "core-js": "2.0.0",
+    "cross-env": "5.1.x",
+    "eslint": "7.1.x",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "7.0.1",
+    "globby": "^11.0.1",
+    "highlight.js": "^10.2.1",
+    "imagemin-lint-staged": "0.4.0",
+    "inquirer": "^7.1.0",
+    "jest": "^23.5.0",
+    "lerna": "^3.22.0",
+    "lint-staged": "10.4.0",
+    "lodash": "^4.17.20",
+    "markdown-it-custom-block": "0.1.x",
+    "markdownlint-cli": "0.24.0",
+    "memfs": "^2.9.4",
+    "moment": "^2.29.0",
+    "node-sass": "4.14.1",
+    "pikaday": "^1.8.0",
+    "prettier": "^2.1.2",
+    "prismjs": "1.14.x",
+    "raw-loader": "^4.0.1",
+    "request": "^2.88.2",
+    "request-promise-native": "^1.0.8",
+    "rimraf": "^2.6.2",
+    "sass": "^1.26.11",
+    "sass-loader": "10.0.2",
+    "semver": "^7.3.2",
+    "standard-version": "^9.0.0",
+    "strip-indent": "2.0.x",
+    "stylelint": "13.7.2",
+    "stylelint-config-css-modules": "2.2.0",
+    "stylelint-config-prettier": "8.0.2",
+    "stylelint-config-recess-order": "2.1.0",
+    "stylelint-config-standard": "20.0.0",
+    "stylelint-scss": "3.18.0",
+    "vue": "^2.6.12",
+    "vue-ads-table-tree": "^2.4.2",
+    "vuepress": "1.7.x",
+    "webpack": "^4.19.0",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "standard-version": {
+    "scripts": {
+      "postchangelog": "./node_modules/.bin/prettier --write CHANGELOG.md"
+    },
+    "types": [
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "perf",
+        "section": "Performance"
+      },
+      {
+        "type": "docs",
+        "hidden": true
+      },
+      {
+        "type": "style",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "hidden": true
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      },
+      {
+        "type": "test",
+        "hidden": true
+      }
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "resolutions": {
+    "vue-router": "3.5.x"
+  }
+}

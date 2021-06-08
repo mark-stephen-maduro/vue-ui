@@ -1,0 +1,68 @@
+.tier-layout {
+  padding-right: 15px;
+  padding-left: 15px;
+
+  &--left-panel {
+    padding-top: 3.5rem;
+    padding-bottom: 5rem;
+    border-right: 1px solid #dee2e6;
+    background-color: white;
+    @media (max-width: 800px) {
+      border-bottom: 1px solid #dee2e6;
+      border-right: none;
+    }
+  }
+
+  &--right-panel {
+    padding-top: 3.5rem;
+    padding-bottom: 5rem;
+    border-left: 1px solid #dee2e6;
+    background-color: white;
+  }
+
+  &--content {
+    @media (max-width: 767.98px) {
+      margin-left: -15px !important;
+    }
+  }
+
+  &--tier2 {
+    min-height: 35vh !important;
+    background-color: $ipy-tier-two-background-color;
+    padding-top: 4.5rem;
+  }
+
+  &--tier3 {
+    height: 65vh !important;
+    background-color: $ipy-tier-three-background-color;
+    padding-bottom: 5rem;
+
+    &-content {
+      height: 90%;
+    }
+
+    @media (max-width: 800px) {
+      border-bottom: 1px solid #dee2e6;
+    }
+  }
+
+  &--default {
+    height: 100%;
+    background-color: transparent;
+  }
+}
+
+@keyframes clip {
+  from {
+    background: #00b6ff;
+    border-radius: 10px;
+    opacity: 0.5;
+    clip-path: circle(25% at 90% 20%);
+  }
+  to {
+    background: none;
+    border-radius: 10px;
+    opacity: 1;
+    clip-path: circle(100%);
+  }
+}

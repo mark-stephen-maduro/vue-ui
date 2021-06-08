@@ -1,0 +1,88 @@
+
+stages:
+  - build
+  - upload
+  - deploy
+
+# build docs website
+build:
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(next|main|dev\/.*$|ci\/.*$)$/'
+  image: node:12
+  stage: build
+  variables:
+    GL_CI_TOKEN: ${CI_JOB_TOKEN}
+  before_script:
+    - export BUILD_VERSION=$(node -e "require('./lerna.json').version" -p)
+    - export BUILD_VERSION_SAFE=$(echo $BUILD_VERSION | sed -e 's,\.,'""',g')
+  script:
+    - yarn x
+    - yarn x build
+    - yarn x docs:build --debug
+    - mkdir -p "vuepress/docs-${BUILD_VERSION_SAFE}"
+    # replace dots sed -e 's,\.,'"\\."',g'
+    # Vuepress does not support dot on dest
+    - VUE_APP_BASE_URL=/$BUILD_VERSION/ yarn x docs:build --debug --dest=./vuepress/docs-${BUILD_VERSION_SAFE}/
+    - tar czfv docs-${BUILD_VERSION}.tar.gz --transform=s/docs-${BUILD_VERSION_SAFE}/${BUILD_VERSION}/ --directory=vuepress/ docs-${BUILD_VERSION_SAFE}
+    - mv docs-${BUILD_VERSION}.tar.gz docs.tar.gz
+  artifacts:
+    expire_in: 32 hours
+    paths:
+      - docs.tar.gz
+
+# build and upload a versioned doc
+upload_docs:
+  stage: upload
+  image: coffeekitkat/curl:7.55.0
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(next|main)$/'
+  before_script:
+    - export BUILD_VERSION=$(cat ./lerna.json | jq ".version" -r)
+  script:
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file docs.tar.gz "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/docs-site/1.4.0/${BUILD_VERSION}.tar.gz"'
+    - echo "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/docs-site/${BUILD_VERSION}/${BUILD_VERSION}.tar.gz"
+  dependencies:
+    - build
+
+# Upload dev and test versions of the docs bundle
+upload_docs_dev:
+  stage: upload
+  image: coffeekitkat/curl:7.55.0
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(next|main|dev\/.*$|ci\/.*$)$/'
+  before_script:
+    - export BUILD_VERSION=$(cat ./lerna.json | jq ".version" -r)
+  script:
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file docs.tar.gz "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/docs-site-dev/1.4.0/${BUILD_VERSION}.tar.gz"'
+    - echo "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/docs-site-dev/1.4.0/${BUILD_VERSION}.tar.gz"
+  dependencies:
+    - build
+
+# Deploy artifact from build only when branch is default
+pages: # the job must be named pages
+  image: node:12
+  stage: deploy
+  allow_failure: true
+  variables:
+    GL_CI_TOKEN: ${CI_JOB_TOKEN}
+  script:
+    - yarn x
+    - yarn x build && yarn x docs:build
+    - mv ./docs/.vuepress/dist public # rename the dist folder (result of npm run build)
+  artifacts:
+    paths:
+      - public # artifact path must be /public for GitLab Pages to pick it up
+  only:
+    - next
+
+
+# image: curlimages/curl:latest
+# upload:
+#   stage: upload
+#   script:
+#     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file path/to/file.txt "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/my_package/0.0.1/file.txt"'
+
+# download:
+#   stage: download
+#   script:
+#     - 'wget --header="JOB-TOKEN: $CI_JOB_TOKEN" ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/my_package/0.0.1/file.txt'

@@ -1,0 +1,65 @@
+
+>> package.json
+
+# point module to target files in `dist/` folder
+
++ "main": "dist/infopiphany-tiptap.common.js",
++ "module": "dist/infopiphany-tiptap.esm.js",
++ "source": "src/index.js",
+
+# fix: remove `popper 1.0.1`
+#
+# The package "popper" was accidentally installed and was not really dependency.
+# See !27
+
+- "popper": "^1.0.1",
+
+# Add fontawesome as peerDependency
+
++ "@fortawesome/fontawesome-svg-core": "^1.2.32",
++ "@fortawesome/free-regular-svg-icons": "^5.15.1",
++ "@fortawesome/free-solid-svg-icons": "^5.15.1",
++ "@fortawesome/vue-fontawesome": "^2.0.0"
+
+# bump rollup/plugin-replace from 2.3.3 to 2.4.1
++ "@rollup/plugin-replace": "^2.4.1"
+
+
+  "contributors": [
+    "Mark Terence Tiglao <markterencetiglao@gmail.com> (https://keybase.io/coffeekitkat)"
+  ],
++  "main": "dist/infopiphany-tiptap.common.js",
++  "module": "dist/infopiphany-tiptap.esm.js",
++  "source": "src/index.js",
+  "files": [
+    "src",
+    "dist",
+    "extensions.js",
+    "index.js"
+  ],
+  "scripts": {
+    "serve": "vue-cli-service serve --open example/basic/main.js",
+    "build:lib": "rollup -c --environment BUILD:production",
+    "build": "npm run build:cjs && npm run build:es && npm run build:umd",
+    "build:cjs": "rollup --config build/rollup.config.cjs.js --environment BUILD:production",
+    "build:es": "rollup --config build/rollup.config.es.js --environment BUILD:production",
+    "build:umd": "rollup --config build/rollup.config.umd.js --environment BUILD:production"
+  },
+  "dependencies": {
+    "core-js": "3.x.x",
+    "lodash.debounce": "^4.0.8",
+    "tiptap": "^1.30.0",
+    "tiptap-extensions": "^1.33.1",
++    "@fortawesome/fontawesome-svg-core": "^1.2.32",
++    "@fortawesome/free-regular-svg-icons": "^5.15.1",
++    "@fortawesome/free-solid-svg-icons": "^5.15.1",
++    "@fortawesome/vue-fontawesome": "^2.0.0"
+  },
+  "peerDependencies": {
+    "vue": "2.6.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@rollup/plugin-alias": "^3.1.1",
+    "@rollup/plugin-node-resolve": "^9.0.0",
++    "@rollup/plugin-replace": "^2.4.1",

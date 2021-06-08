@@ -1,0 +1,75 @@
+// Retrieve color Sass maps
+
+@function section-color($key: 'primary') {
+  @return map-get($section-colors, $key);
+}
+
+// Lines colors
+
+@function shapes-primary-color($key: 'step-1-gradient-bg') {
+  @return map-get($shapes-primary-colors, $key);
+}
+
+@function shapes-default-color($key: 'step-1-gradient-bg') {
+  @return map-get($shapes-default-colors, $key);
+}
+
+@function lines-light-color($key: 'step-1-gradient-bg') {
+  @return map-get($shapes-light-colors, $key);
+}
+
+@function shapes-dark-color($key: 'step-1-gradient-bg') {
+  @return map-get($shapes-dark-colors, $key);
+}
+
+/*
+* SASS preserves units in arithmetic operations. For example:
+* 12em * 0 = 0em. This function return the unit of a numeric value.
+*
+* For more examples, see: https://codepen.io/paulgv/pen/XWrqMgQ
+*/
+@function extract-unit($number) {
+  @return $number * 0 + 1;
+}
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / extract-unit($number);
+  }
+
+  @return $number;
+}
+
+@function single-unit-rem($value, $font-size-base) {
+  @if (extract-unit($value) != 1px) {
+    @return $value;
+  }
+
+  $converted: $value / $font-size-base;
+
+  @return strip-unit($converted) * 1rem;
+}
+
+@function multiple-units-rem($values, $font-size-base) {
+  $rem-values: ();
+
+  @each $value in $values {
+    $rem-values: append($rem-values, single-unit-rem($value, $font-size-base));
+  }
+
+  @return $rem-values;
+}
+
+@function px-to-rem($px, $font-size-base: 16px) {
+  @if type-of($px) == 'number' {
+    @return single-unit-rem($px, $font-size-base);
+  } @else if type-of($px) == 'list' {
+    @return multiple-units-rem($px, $font-size-base);
+  } @else {
+    @return $px;
+  }
+}
+
+@function if-important($important) {
+  @return #{if($important, '!important', '')};
+}

@@ -1,0 +1,14 @@
+.col-form-label,
+label {
+  @include ipy-line-height-6;
+  @include font-size-14;
+  @include ipy-font-weight-semibold;
+  margin-bottom: 2px;
+}
+
+.for-display {
+  display: block;
+  font-weight: 550;
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+}

@@ -1,0 +1,30 @@
+// TODO: change .gl-* names. Just change the CSS class names.
+
+.gl-breadcrumb-list {
+  background: transparent;
+  padding: 0;
+  align-items: center;
+  // TODO: add media-breakpoint for XS screens
+  // when screen is XS then it should "flex-wrap"
+}
+
+.gl-breadcrumb-separator svg {
+  margin: auto 8px;
+  width: 8px;
+  color: $gray-700;
+}
+
+.gl-breadcrumb-separator > span {
+  margin: auto 8px;
+  width: 8px;
+  color: $gray-700;
+}
+
+// overrides
+.breadcrumb-item a {
+  font-size: 12px;
+  color: $gray-700;
+
+  // TODO: add media-breakpoint for XS screen
+  // when screen is XS then "truncate" letters by 128px;
+}

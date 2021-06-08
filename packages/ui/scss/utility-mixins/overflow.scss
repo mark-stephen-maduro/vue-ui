@@ -1,0 +1,7 @@
+// ADD CLASS FOR SCROLL X AND Y
+@mixin ipy-scroll-x {
+  overflow-x: auto !important;
+}
+@mixin ipy-scroll-y {
+  overflow-y: auto !important;
+}

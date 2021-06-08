@@ -1,0 +1,115 @@
+@import '../functions.scss';
+
+$util-font-sizes: 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40,
+  42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80;
+
+@mixin font-size-10 {
+  font-size: px-to-rem(10px);
+}
+@mixin font-size-12 {
+  font-size: px-to-rem(12px);
+}
+@mixin font-size-14 {
+  font-size: px-to-rem(14px);
+}
+@mixin font-size-16 {
+  font-size: px-to-rem(16px);
+}
+@mixin font-size-18 {
+  font-size: px-to-rem(18px);
+}
+@mixin font-size-20 {
+  font-size: px-to-rem(20px);
+}
+@mixin font-size-22 {
+  font-size: px-to-rem(22px);
+}
+@mixin font-size-24 {
+  font-size: px-to-rem(24px);
+}
+@mixin font-size-26 {
+  font-size: px-to-rem(26px);
+}
+@mixin font-size-28 {
+  font-size: px-to-rem(28px);
+}
+@mixin font-size-30 {
+  font-size: px-to-rem(30px);
+}
+@mixin font-size-32 {
+  font-size: px-to-rem(32px);
+}
+@mixin font-size-34 {
+  font-size: px-to-rem(34px);
+}
+@mixin font-size-36 {
+  font-size: px-to-rem(36px);
+}
+@mixin font-size-38 {
+  font-size: px-to-rem(38px);
+}
+@mixin font-size-40 {
+  font-size: px-to-rem(40px);
+}
+@mixin font-size-42 {
+  font-size: px-to-rem(42px);
+}
+@mixin font-size-44 {
+  font-size: px-to-rem(44px);
+}
+@mixin font-size-46 {
+  font-size: px-to-rem(46px);
+}
+@mixin font-size-48 {
+  font-size: px-to-rem(48px);
+}
+@mixin font-size-50 {
+  font-size: px-to-rem(50px);
+}
+@mixin font-size-52 {
+  font-size: px-to-rem(52px);
+}
+@mixin font-size-54 {
+  font-size: px-to-rem(54px);
+}
+@mixin font-size-56 {
+  font-size: px-to-rem(56px);
+}
+@mixin font-size-58 {
+  font-size: px-to-rem(58px);
+}
+@mixin font-size-60 {
+  font-size: px-to-rem(60px);
+}
+@mixin font-size-62 {
+  font-size: px-to-rem(62px);
+}
+@mixin font-size-64 {
+  font-size: px-to-rem(64px);
+}
+@mixin font-size-66 {
+  font-size: px-to-rem(66px);
+}
+@mixin font-size-68 {
+  font-size: px-to-rem(68px);
+}
+@mixin font-size-70 {
+  font-size: px-to-rem(70px);
+}
+@mixin font-size-72 {
+  font-size: px-to-rem(72px);
+}
+@mixin font-size-74 {
+  font-size: px-to-rem(74px);
+}
+@mixin font-size-76 {
+  font-size: px-to-rem(76px);
+}
+@mixin font-size-78 {
+  font-size: px-to-rem(78px);
+}
+@mixin font-size-80 {
+  font-size: px-to-rem(80px);
+}
+
+// mixins for line height, cursors, spacing, font-weight, background-colors, text-colors, padding

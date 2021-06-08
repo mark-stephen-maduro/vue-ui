@@ -1,0 +1,9 @@
+/*
+* params {theme-name}
+* params {editor-bg}
+* params {editor-border-color}
+* params {button-text-color}
+*/
+
+@include editor-theme(default, #fdfdfd, #eee, #492540);
+@include editor-theme(dark-neon, #303a52, #574b90, #a7ff83);

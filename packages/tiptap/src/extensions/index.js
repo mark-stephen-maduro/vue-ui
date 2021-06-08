@@ -1,0 +1,32 @@
+export { default as Superscript } from './marks/superscript';
+export { default as Alignment } from './marks/alignment';
+export { default as TextColor } from './marks/colors';
+export { default as Paragraph } from './marks/paragraph';
+export { default as Heading } from './marks/heading';
+export { default as FormatClear } from './marks/format_clear';
+export { default as Indent } from './marks/indent';
+export { default as FontSize } from './marks/font_size';
+export { default as FontType } from './marks/font_type';
+export { default as Blockquote } from './marks/blockquote';
+
+// Tiptap built in
+export { HorizontalRule } from 'tiptap-extensions';
+export { OrderedList } from 'tiptap-extensions';
+export { BulletList } from 'tiptap-extensions';
+export { CodeBlock } from 'tiptap-extensions';
+export { HardBreak } from 'tiptap-extensions';
+export { ListItem } from 'tiptap-extensions';
+export { TodoItem } from 'tiptap-extensions';
+export { TodoList } from 'tiptap-extensions';
+export { Image } from 'tiptap-extensions';
+export { Bold } from 'tiptap-extensions';
+export { Strike } from 'tiptap-extensions';
+export { Italic } from 'tiptap-extensions';
+export { Underline } from 'tiptap-extensions';
+export { Code } from 'tiptap-extensions';
+export { Link } from 'tiptap-extensions';
+export { Table } from 'tiptap-extensions';
+export { TableHeader } from 'tiptap-extensions';
+export { TableCell } from 'tiptap-extensions';
+export { TableRow } from 'tiptap-extensions';
+export { History } from 'tiptap-extensions';

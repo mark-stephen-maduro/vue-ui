@@ -1,0 +1,108 @@
+@import '../functions.scss';
+@import '../utility-mixins.scss';
+
+.ipy-font-weight-lighter {
+  @include ipy-font-weight-lighter;
+}
+.ipy-font-weight-light {
+  @include ipy-font-weight-light;
+}
+.ipy-font-weight-normal {
+  @include ipy-font-weight-normal;
+}
+.ipy-font-weight-semibold {
+  @include ipy-font-weight-semibold;
+}
+.ipy-font-weight-bold {
+  @include ipy-font-weight-bold;
+}
+.ipy-font-weight-bolder {
+  @include ipy-font-weight-bolder;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+.text-through {
+  text-decoration: line-through;
+}
+
+// Line heights
+
+.lh-100 {
+  @include ipy-line-height-1;
+}
+.lh-110 {
+  @include ipy-line-height-2;
+}
+.lh-120 {
+  @include ipy-line-height-3;
+}
+.lh-130 {
+  @include ipy-line-height-4;
+}
+.lh-140 {
+  @include ipy-line-height-5;
+}
+.lh-150 {
+  @include ipy-line-height-6;
+}
+.lh-160 {
+  @include ipy-line-height-7;
+}
+.lh-170 {
+  @include ipy-line-height-8;
+}
+.lh-180 {
+  @include ipy-line-height-9;
+}
+
+// Letter spacings
+
+.ls-1 {
+  @include ipy-line-space-1;
+}
+.ls-15 {
+  @include ipy-line-space-2;
+}
+.ls-2 {
+  @include ipy-line-space-3;
+}
+
+// cursors
+
+.ipy-cursor-pointer {
+  @include ipy-cursor-pointer;
+}
+.ipy-cursor-help {
+  @include ipy-cursor-help;
+}
+.ipy-cursor-wait {
+  @include ipy-cursor-wait;
+}
+.ipy-cursor-not-allowed {
+  @include ipy-cursor-not-allowed;
+}
+.ipy-cursor-grab {
+  @include ipy-cursor-grab;
+}
+
+// scroll
+
+.ipy-scroll-x {
+  @include ipy-scroll-x;
+}
+.ipy-scroll-y {
+  @include ipy-scroll-y;
+}
+
+// font sizes
+
+$util-font-sizes: 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40,
+  42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80;
+
+@each $util-font-size in $util-font-sizes {
+  .font-size-#{$util-font-size} {
+    font-size: px-to-rem($util-font-size + px) !important;
+  }
+}

@@ -1,0 +1,19 @@
+# npm / yarn
+/npm-debug.log
+/yarn-error.log
+/yarn.lock
+
+# Storybook
+/.storybook/
+/storybook/
+/public/
+
+# Test & Build
+/tests/
+/.gitlab-ci.yml
+/rollup.config.js
+
+# Dot files
+.eslintrc
+.prettierrc
+.prettierignore

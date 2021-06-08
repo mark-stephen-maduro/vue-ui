@@ -1,0 +1,111 @@
+/**
+ Import Infopiphany UI component styles
+ At the moment we only import component specific styles in order to avoid side-effects
+*/
+.app-styles {
+  padding: 0 !important;
+
+  @import '~bootstrap/scss/bootstrap.scss';
+  @import '~@infopiphany/ui/scss/variables.scss';
+  @import '~bootstrap-vue/src/index.scss';
+  @import '~@infopiphany/ui/scss/functions.scss';
+  @import '~@infopiphany/ui/scss/mixins.scss';
+  @import '~@infopiphany/ui/scss/utilities/text.scss';
+
+  // Vue Component Stylesheet
+  @import '~@infopiphany/ui/scss/infopiphany-components.scss';
+
+  // Load IpyEditor style
+  @import '~@infopiphany/tiptap/src/scss/index.scss';
+
+}
+// Load styles for the IpyEditor's tooltip
+@import '~@infopiphany/tiptap/dist/index.css';
+html,
+body {
+  background-color: #fafafa !important;
+}
+// vuepress theme
+.theme-container {
+  .navbar {
+    background-color: #0078b7;
+
+    .home-link .site-name {
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .links {
+      background-color: #0078b7;
+
+      .nav-item {
+        color: white;
+
+        & .router-link-active {
+          color: white;
+        }
+
+        .nav-link:hover {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .sidebar {
+    width: 17rem !important;
+
+    ul li a.active {
+      background-color: #e0e0e0;
+      color: #161616;
+      border-left-color: #0078b7;
+    }
+
+    .sidebar-sub-headers .sidebar-sub-header a.active {
+      background-color: transparent;
+      color: #161616;
+    }
+  }
+
+  .page {
+    .theme-default-content {
+      margin: 40px 50px !important;
+      max-width: 1080px !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+      &.custom-p p {
+        line-height: 1.5;
+        font-weight: 450;
+      }
+
+      .table-of-contents {
+        // ul {
+        //   list-style: none;
+        //   margin-left: 0;
+        //   padding-left: 1em;
+        // }
+        // ul > li::before {
+        //   // display: inline-block;
+        //   // content: '-';
+        //   // width: 1em;
+        //   // margin-left: -1em;
+        // }
+      }
+    }
+
+    &-edit {
+      margin-left: 50px !important;
+      max-width: 900px !important;
+    }
+
+    &-nav {
+      margin-left: 50px !important;
+      max-width: 1080px !important;
+      .inner {
+        border-top-color: #ddd !important;
+      }
+    }
+  }
+}

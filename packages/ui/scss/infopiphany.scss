@@ -1,0 +1,45 @@
+/*
+Example only
+
+```scss
+@import 'bootstrap';
+
+@import 'bootstrap-vue/src/index.scss'; // stylelint-disable-line
+
+// Settings
+@import 'functions';
+@import 'variables';
+@import 'mixins';
+@import 'utility-mixins/index';
+@import 'typescale/index';
+
+// Components
+@import 'components';
+```
+*/
+
+// Infopiphany variable overrides
+@import 'variables.scss';
+// @import 'variable_overrides.scss';
+
+// Include botostrap core
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+@import 'node_modules/bootstrap/scss/root';
+@import 'node_modules/bootstrap/scss/reboot';
+
+// Settings
+@import 'functions';
+@import 'mixins';
+@import 'utility-mixins';
+@import 'utilities';
+
+// Bootstrap and its default variables
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+
+@import 'node_modules/bootstrap-vue/src/index.scss'; // stylelint-disable-line
+
+
+// Infopiphany Component Styles
+@import 'infopiphany-components.scss';

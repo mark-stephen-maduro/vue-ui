@@ -1,0 +1,18 @@
+@mixin ipy-font-weight-lighter {
+  font-weight: $font-weight-lighter !important;
+}
+@mixin ipy-font-weight-light {
+  font-weight: $font-weight-light !important;
+}
+@mixin ipy-font-weight-normal {
+  font-weight: $font-weight-normal !important;
+}
+@mixin ipy-font-weight-semibold {
+  font-weight: 600 !important;
+}
+@mixin ipy-font-weight-bold {
+  font-weight: $font-weight-bold !important;
+}
+@mixin ipy-font-weight-bolder {
+  font-weight: $font-weight-bolder !important;
+}

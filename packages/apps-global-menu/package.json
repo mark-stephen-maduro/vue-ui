@@ -1,0 +1,119 @@
+{
+  "name": "@infopiphany/apps-global-menu",
+  "version": "1.4.3",
+  "description": "Infopiphany UI Components",
+  "repository": "https://gitlab.com/infopiphany/infopiphany-ui.git",
+  "author": "Mark Terence <mtiglao.ccheetah@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "src",
+    "esm",
+    "dist",
+    "package.json"
+  ],
+  "main": "esm/index.js",
+  "module": "esm/index.js",
+  "jsnext:main": "esm/index.js",
+  "source": "src/index.js",
+  "sideEffects": false,
+  "scripts": {
+    "lint": "vue-cli-service lint",
+    "build:es": "rm -rf ./esm && rollup --config build/rollup.config.es.js",
+    "build": "vue-cli-service build --target lib ./src/index.js",
+    "build:all": "yarn build:es && yarn build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "7.10.2",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-replace": "^2.3.3",
+    "@vue/babel-preset-jsx": "^1.2.4",
+    "@vue/cli-plugin-babel": "^3.5.1",
+    "@vue/cli-plugin-eslint": "^3.5.1",
+    "@vue/cli-service": "^3.5.1",
+    "@vue/component-compiler-utils": "^3.2.0",
+    "@vue/eslint-config-prettier": "4.0.x",
+    "@vue/eslint-config-standard": "4.0.x",
+    "babel-eslint": "^10.0.1",
+    "bootstrap": "^4.5.3",
+    "bootstrap-vue": "^2.19.0",
+    "clean-css": "^4.1.8",
+    "core-js": "^3.7.0",
+    "cross-env": "^5.1.3",
+    "eslint": "5.16.x",
+    "eslint-plugin-vue": "vuejs/eslint-plugin-vue#edd5f14",
+    "glob": "^7.1.6",
+    "husky": "^4.2.0",
+    "node-sass": "^4.14.1",
+    "raw-loader": "^2.0.0",
+    "rollup": "^2.8.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-css-only": "^2.1.0",
+    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-require-context": "^0.0.2",
+    "rollup-plugin-string": "^3.0.0",
+    "rollup-plugin-vue": "^5.1.6",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
+    "standard-version": "^7.1.0",
+    "stylelint": "10.0.x",
+    "stylelint-config-css-modules": "1.4.x",
+    "stylelint-config-prettier": "5.0.x",
+    "stylelint-config-recess-order": "2.0.x",
+    "stylelint-config-standard": "18.3.x",
+    "stylelint-scss": "3.6.x",
+    "vue": "^2.6.12",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "browserslist": [
+    "> 10%",
+    "last 2 versions"
+  ],
+  "standard-version": {
+    "scripts": {
+      "postchangelog": "./node_modules/.bin/prettier --write CHANGELOG.md"
+    },
+    "types": [
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "perf",
+        "section": "Performance"
+      },
+      {
+        "type": "docs",
+        "hidden": true
+      },
+      {
+        "type": "style",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "hidden": true
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      },
+      {
+        "type": "test",
+        "hidden": true
+      }
+    ]
+  },
+  "dependencies": {
+    "@infopiphany/ui": "^1.4.3"
+  },
+  "publishConfig": {
+    "@infopiphany:registry": "https://gitlab.com/api/v4/projects/13732502/packages/npm/"
+  },
+  "gitHead": "112896ebeecc522ed0382f769dc3bd8fb6237db6"
+}

@@ -1,0 +1,15 @@
+// set left and right padding for 9px
+// .btn {
+//   margin-left: 5px;
+//   margin-right: 5px;
+// }
+// button default variant
+.btn-default {
+  @include button-variant(
+    map-get($theme-colors, 'default'),
+    $btn-default-border
+  );
+  &:focus {
+    box-shadow: none;
+  }
+}

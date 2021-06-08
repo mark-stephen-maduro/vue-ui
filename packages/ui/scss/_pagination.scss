@@ -1,0 +1,41 @@
+.page-item {
+  &.active .page-link {
+  }
+
+  .page-link,
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0 1px;
+    border-radius: 24%;
+    border: none;
+    width: 36px;
+    height: 36px;
+    font-size: $font-size-sm;
+    color: $gray-600;
+  }
+}
+
+.pagination-lg {
+  .page-item {
+    .page-link,
+    span {
+      width: 46px;
+      height: 46px;
+      line-height: 46px;
+    }
+  }
+}
+
+.pagination-sm {
+  .page-item {
+    .page-link,
+    span {
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+    }
+  }
+}

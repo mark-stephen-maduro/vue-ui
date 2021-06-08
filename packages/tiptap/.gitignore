@@ -1,0 +1,27 @@
+.DS_Store
+node_modules
+/dist
+.vuepress/dist
+/lib
+/storybook/
+/.storybook/preview-head.html
+/tests/__image_snapshots__/__diff_output__/
+/scss_to_js/scss_variables.*
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

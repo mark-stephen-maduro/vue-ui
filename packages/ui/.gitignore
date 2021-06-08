@@ -1,0 +1,13 @@
+/dist/
+/node_modules/
+/storybook/
+/.storybook/preview-head.html
+/tests/__image_snapshots__/__diff_output__/
+/scss_to_js/scss_variables.*
+.idea
+.vscode
+.DS_Store
+yarn-error.log
+infopiphany-infopiphany-ui-*.tgz
+.vuepress/dist
+esm

@@ -1,0 +1,93 @@
+@mixin menubar($editor-bg, $editor-border-color, $button-text-color) {
+  padding-left: 10px;
+  padding-right: 10px;
+  .dropdown-container {
+    display: inline;
+    position: relative;
+    &--menu {
+      display: none;
+      position: absolute;
+      top: 28px;
+      left: -250%;
+
+      height: fit-content;
+      z-index: 1;
+      background-color: lighten($editor-bg, 5%);
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      &.show {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__border {
+    background-color: $editor-border-color;
+    height: 1px;
+    margin: 0 10px !important;
+  }
+
+  &__button {
+    height: 35px;
+    width: 35px;
+    color: $button-text-color !important;
+    background-color: transparent;
+    font-weight: bold;
+    border: transparent;
+    outline: none;
+
+    &:hover {
+      background-color: darken($editor-bg, 15%);
+      border-radius: 0;
+    }
+
+    &:not(.heading) {
+      margin: 0px !important;
+    }
+
+    svg {
+      font-weight: 400;
+      font-size: 0.9rem;
+      margin-bottom: 1px !important;
+    }
+
+    &.table-dropdown {
+      min-width: 50px;
+    }
+
+    &.is-active {
+      background-color: darken($editor-bg, 15%);
+      color: adjust-hue(#0078b7, 90);
+    }
+
+    &.headings {
+      width: 109px;
+      font-weight: 500;
+      text-transform: uppercase;
+      svg {
+        font-size: 0.7rem;
+      }
+    }
+
+    + .dropdown-container--menu {
+      ul li {
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: center;
+
+        &:active,
+        &:hover {
+          background-color: darken($editor-bg, 15%) !important;
+        }
+
+        label {
+          padding: 5px !important;
+          margin: 0;
+          font-size: 0.8rem;
+          font-weight: 400;
+          letter-spacing: -0.006em;
+        }
+      }
+    }
+  }
+}

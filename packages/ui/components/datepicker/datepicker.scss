@@ -1,0 +1,76 @@
+@import 'node_modules/pikaday/scss/pikaday';
+
+// $grid-size: px-to-rem(8px);
+
+.infopiphany-datepicker-input {
+  width: px-to-rem(8px) * 30;
+}
+.infopiphany-datepicker-trigger {
+  font-size: px-to-rem(12px);
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: px-to-rem(12px);
+}
+
+.infopiphany-datepicker-theme {
+  position: fixed;
+  // Override the style of pikaday
+
+  &.is-bound {
+    position: absolute !important;
+  }
+
+  .pika-lendar {
+    // margin: 0;
+    // padding-top: 16px;
+    // padding: 0 12px;
+    // padding-bottom: 8px;
+  }
+  .pika-title {
+  }
+  .pika-next,
+  .pika-prev {
+  }
+
+  .pika-next {
+  }
+
+  .pika-prev {
+  }
+
+  .pika-label {
+  }
+
+  .pika-select {
+  }
+
+  th {
+  }
+
+  abbr[title] {
+  }
+
+  .pika-button {
+    &.is-past-date {
+    }
+
+    &:hover {
+      background-color: $orange;
+    }
+  }
+
+  .is-today > .pika-button {
+  }
+
+  .is-selected > .pika-button {
+  }
+
+  .pika-table {
+    th,
+    td {
+      padding: 0;
+    }
+  }
+}

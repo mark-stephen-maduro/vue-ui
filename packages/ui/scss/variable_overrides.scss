@@ -1,0 +1,67 @@
+// DEPRECATED: Please use varaible.scss to defined Infopiphany UI variables and bootstrap override variables
+
+/*
+ * This file is only for overriding Bootstrap 4 variables.
+ * Please add any new variables to variables.scss
+ *  Make sure to group variables.
+ * Override bootstrap variables here
+ */
+
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+$blue: #007bff !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+
+$primary: $blue-900 !default;
+
+$body-bg: #fff;
+
+$btn-border-radius: 2px;
+
+// font
+$font-family-base: -apple-system, blinkmacsystemfont, 'Segoe UI', roboto,
+  'Noto Sans', 'Helvetica Neue', arial, sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$font-size-base: 1rem !default;
+
+// buttons
+$btn-font-weight: 600;
+
+// button customized variants
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    'default': #fff,
+  ),
+  $theme-colors
+);
+
+// inputs
+$input-placeholder-color: $placeholder-color;
+
+$input-disabled-bg: rgb(245, 245, 245);
+$input-disabled-border-color: #ccc;
+
+// modal
+$modal-backdrop-bg: rgb(255, 255, 255) !default;
+$modal-header-border-color: transparent !default;
+$modal-footer-border-color: transparent !default;
+
+$modal-fade-transform: inherit !default;
+$modal-show-transform: inherit !default;
+$modal-transition: inherit !default;
+$modal-scale-transform: inherit !default;
+
+// table
+$table-th-font-weight: 600;

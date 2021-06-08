@@ -1,0 +1,6 @@
+// border-bottom transition for input
+@mixin border-anim($status) {
+  transform: scaleX(1);
+  transition: 0.15s;
+  border-bottom: 2px solid $status;
+}

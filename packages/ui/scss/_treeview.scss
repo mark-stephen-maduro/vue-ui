@@ -1,0 +1,46 @@
+ul.asTree {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-indent: 1em;
+  display: inline-block;
+}
+
+ul.asTree ul {
+  display: none;
+  list-style-type: none;
+}
+
+ul.asTree li {
+  /*lets us position the label's ::before*/
+  position: relative;
+}
+
+ul.asTree label {
+  cursor: pointer;
+  font-weight: 400;
+}
+
+ul.asTree label::before {
+  content: '\25B7';
+  position: absolute;
+  left: -1em;
+  top: -1px;
+}
+
+ul.asTree input:checked + .child::before {
+  content: '\25B7';
+}
+
+ul.asTree input:checked + label + ul {
+  display: block;
+}
+
+ul.asTree input:checked + .label::before {
+  content: '';
+  font-weight: bold;
+}
+
+ul.asTree input:checked + .label {
+  font-weight: bold;
+}

@@ -1,0 +1,58 @@
+.table.b-table > tbody > .table-active {
+  outline: none;
+}
+
+.table.b-table > tbody > .table-active:active {
+  outline: none;
+}
+
+.table.b-table > thead > tr > [aria-sort] {
+  outline: none;
+}
+
+table {
+  width: 100%;
+  thead {
+    tr th {
+      background-color: $table-header-background-color;
+      font-weight: $table-header-font-weight;
+      font-size: $table-header-font-size;
+      color: $table-header-font-color;
+      text-transform: uppercase;
+      margin: 2rem;
+
+      div {
+        background-color: $table-header-background-color;
+        font-weight: $table-header-font-weight;
+      }
+    }
+  }
+
+  tbody {
+    tr:hover {
+      background-color: rgba(0, 0, 0, 0.075);
+    }
+
+    tr td {
+      font-weight: $table-td-font-weight;
+      font-size: $table-td-font-size;
+      color: $table-td-font-color;
+      padding-left: $table-header-padding;
+      padding: $table-td-padding;
+    }
+  }
+}
+
+.vue-ads-w-full {
+  tr th {
+    padding: $table-header-padding;
+  }
+
+  .vue-ads-cursor-pointer {
+    cursor: pointer;
+
+    span {
+      margin-right: 5px;
+    }
+  }
+}
